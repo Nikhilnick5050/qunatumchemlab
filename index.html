@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Chem Laboratory | Login</title>
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1f3c, #2d1b5e);
+            transition: 0.6s ease;
+        }
+
+        .fade-out {
+            animation: fadeSlide 0.6s ease forwards;
+        }
+        
+        @keyframes fadeSlide {
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        .login-container {
+            width: 900px;
+            height: 560px;
+            background: #fff;
+            border-radius: 16px;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+        }
+
+        .login-left {
+            width: 50%;
+            padding: 50px;
+            color: #fff;
+            background: linear-gradient(135deg, #1a1f3c, #3a2a7a);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text span {
+            color: #8a7dff;
+        }
+        
+        .login-left h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        .login-left p {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .features {
+            margin-top: auto;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .feature-item i {
+            margin-right: 10px;
+            color: #8a7dff;
+            font-size: 16px;
+        }
+        
+        .decor {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            opacity: 0.3;
+        }
+        
+        .decor span {
+            display: block;
+            width: 80px;
+            height: 8px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.45);
+            margin: 14px 0;
+            transform: rotate(15deg);
+        }
+
+        .login-right {
+            width: 50%;
+            padding: 45px;
+        }
+        
+        .login-right h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #3a2a7a;
+            font-size: 28px;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 18px;
+        }
+        
+        .input-box i {
+            position: absolute;
+            top: 50%;
+            left: 18px;
+            transform: translateY(-50%);
+            color: #888;
+        }
+        
+        .input-box input {
+            width: 100%;
+            padding: 15px 15px 15px 48px;
+            border-radius: 30px;
+            border: 1px solid #ddd;
+            outline: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .input-box input:focus {
+            border-color: #8a7dff;
+            box-shadow: 0 0 0 2px rgba(138, 125, 255, 0.2);
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 18px;
+            align-items: center;
+        }
+        
+        .options a {
+            text-decoration: none;
+            color: #3a2a7a;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .options a:hover {
+            color: #8a7dff;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-container input {
+            margin-right: 8px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .login-btn {
+            background: linear-gradient(135deg, #3a2a7a, #8a7dff);
+            color: #fff;
+            margin-bottom: 14px;
+        }
+        
+        .skip-btn {
+            background: #f3f3f3;
+            color: #333;
+            margin-bottom: 18px;
+        }
+        
+        .skip-btn:hover {
+            background: #e9e9e9;
+        }
+
+        .social-text {
+            text-align: center;
+            font-size: 13px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        
+        .social {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social button {
+            flex: 1;
+            padding: 12px;
+            border-radius: 25px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            background: #fff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .social button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .social i {
+            margin-right: 6px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            margin-top: 15px;
+            color: #666;
+        }
+        
+        .footer a {
+            color: #3a2a7a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: #8a7dff;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 950px) {
+            .login-container {
+                width: 95%;
+                height: auto;
+                flex-direction: column;
+            }
+            
+            .login-left, .login-right {
+                width: 100%;
+            }
+            
+            .login-left {
+                padding: 30px;
+            }
+            
+            .login-right {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <!-- LEFT PANEL -->
+        <div class="login-left">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="https://i.pinimg.com/736x/77/62/b6/7762b6ce59d776fa162b9c2d53f60d1d.jpg" alt="Quantum Chem Logo">
+                </div>
+                <div class="logo-text">Quantum<span>Chem</span></div>
+            </div>
+            
+            <h1>Welcome to Quantum Chemical Database</h1>
+            <p>
+                A cutting-edge platform for managing quantum chemical data, molecular structures, 
+                and computational chemistry results. Store, analyze, and visualize chemical 
+                compounds with quantum precision.
+            </p>
+            
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fas fa-atom"></i>
+                    <span>Quantum molecular modeling</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-database"></i>
+                    <span>Advanced chemical database</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Data visualization & analysis</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure & encrypted storage</span>
+                </div>
+            </div>
+
+            <div class="decor">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="login-right">
+            <!-- LOGIN FORM -->
+            <div id="loginForm">
+                <h2>User Login</h2>
+
+                <div class="input-box">
+                    <i class="fa fa-user"></i>
+                    <input type="text" id="username" placeholder="Username or Email">
+                </div>
+
+                <div class="input-box">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+
+                <div class="options">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Remember me</label>
+                    </div>
+                    <a href="#" id="forgotPassword">Forgot password?</a>
+                </div>
+
+                <button class="btn login-btn" id="loginButton">Login</button>
+
+                <button class="btn skip-btn" id="continueWithoutLogin">
+                    Continue without Login
+                </button>
+
+                <div class="social-text">or continue with</div>
+                <div class="social">
+                    <button id="googleLogin"><i class="fab fa-google"></i>Google</button>
+                    <button id="githubLogin"><i class="fab fa-github"></i>GitHub</button>
+                    <button id="facebookLogin"><i class="fab fa-facebook"></i>Facebook</button>
+                </div>
+
+                <p class="footer">
+                    Don't have an account?
+                    <a href="#" id="showRegister">Create Account</a>
+                </p>
+            </div>
+
+            <!-- REGISTER FORM -->
+            <div id="registerForm" style="display:none;">
+                <h2>Create Account</h2>
+
+                <div class="input-box">
+                    <i class="fa fa-user"></i>
+                    <input type="text" id="fullName" placeholder="Full Name">
+                </div>
+
+                <div class="input-box">
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email">
+                </div>
+
+                <div class="input-box">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" id="registerPassword" placeholder="Password">
+                </div>
+
+                <button class="btn login-btn" id="registerButton">Create Account</button>
+
+                <p class="footer">
+                    Already have an account?
+                    <a href="#" id="showLogin">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const continueWithoutLogin = document.getElementById('continueWithoutLogin');
+            const loginButton = document.getElementById('loginButton');
+            const registerButton = document.getElementById('registerButton');
+            const showRegister = document.getElementById('showRegister');
+            const showLogin = document.getElementById('showLogin');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const body = document.body;
+
+            // Show register form
+            showRegister.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+            });
+
+            // Show login form
+            showLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                registerForm.style.display = 'none';
+                loginForm.style.display = 'block';
+            });
+
+            // Continue without login - redirect to chemical.html
+            continueWithoutLogin.addEventListener('click', function() {
+                body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = "chemical.html";
+                }, 600);
+            });
+
+            // Login functionality
+            loginButton.addEventListener('click', function() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const rememberMe = document.getElementById('rememberMe').checked;
+                
+                if (!username || !password) {
+                    alert('Please enter username and password');
+                    return;
+                }
+                
+                // Simulate login
+                loginButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+                loginButton.disabled = true;
+                
+                setTimeout(() => {
+                    // Store login state
+                    const userData = {
+                        name: username.split('@')[0] || username,
+                        email: username.includes('@') ? username : `${username}@quantumchem.com`,
+                        isLoggedIn: true
+                    };
+                    
+                    if (rememberMe) {
+                        localStorage.setItem('quantumChemUser', JSON.stringify(userData));
+                    } else {
+                        sessionStorage.setItem('quantumChemUser', JSON.stringify(userData));
+                    }
+                    
+                    // Redirect to chemical.html
+                    body.classList.add('fade-out');
+                    setTimeout(() => {
+                        window.location.href = "chemical.html";
+                    }, 600);
+                }, 1500);
+            });
+
+            // Register functionality
+            registerButton.addEventListener('click', function() {
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('registerPassword').value;
+                
+                if (!fullName || !email || !password) {
+                    alert('Please fill all fields');
+                    return;
+                }
+                
+                if (password.length < 6) {
+                    alert('Password must be at least 6 characters long');
+                    return;
+                }
+                
+                registerButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+                registerButton.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Account created successfully! You can now login.');
+                    registerForm.style.display = 'none';
+                    loginForm.style.display = 'block';
+                    document.getElementById('username').value = email;
+                    document.getElementById('password').value = password;
+                    
+                    registerButton.innerHTML = 'Create Account';
+                    registerButton.disabled = false;
+                }, 1500);
+            });
+
+            // Social login buttons
+            document.getElementById('googleLogin').addEventListener('click', function() {
+                alert('Google login would be implemented here');
+            });
+
+            document.getElementById('githubLogin').addEventListener('click', function() {
+                alert('GitHub login would be implemented here');
+            });
+
+            document.getElementById('facebookLogin').addEventListener('click', function() {
+                alert('Facebook login would be implemented here');
+            });
+
+            // Forgot password
+            document.getElementById('forgotPassword').addEventListener('click', function(e) {
+                e.preventDefault();
+                const email = prompt('Please enter your email to reset password:');
+                if (email) {
+                    alert(`Password reset link would be sent to ${email}`);
+                }
+            });
+
+            // Check if already logged in
+            function checkExistingLogin() {
+                const userData = localStorage.getItem('quantumChemUser') || sessionStorage.getItem('quantumChemUser');
+                if (userData) {
+                    try {
+                        const user = JSON.parse(userData);
+                        if (user.isLoggedIn) {
+                            // Auto-redirect to chemical.html
+                            body.classList.add('fade-out');
+                            setTimeout(() => {
+                                window.location.href = "chemical.html";
+                            }, 600);
+                        }
+                    } catch (e) {
+                        console.error('Error parsing user data:', e);
+                    }
+                }
+            }
+
+            checkExistingLogin();
+            
+            // Enter key support for forms
+            document.getElementById('password').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    loginButton.click();
+                }
+            });
+            
+            document.getElementById('registerPassword').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    registerButton.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
